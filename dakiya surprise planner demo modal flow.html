@@ -1,0 +1,2336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DAKIYA — Live Demo Showcase</title>
+<!-- ⭐ FONTS CHANGED: 'Syne' replaced with 'Poppins' for headings, 'DM Sans' with 'Inter' for body, 'JetBrains Mono' kept for monospace -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0b0f1a;
+  --paper: #f8f7f4;
+  --blue: #1a56ff;
+  --blue2: #3d73ff;
+  --gold: #ffb703;
+  --green: #06d6a0;
+  --pink: #ff4fd8;
+  --surface: #ffffff;
+  --surface2: #f0f2ff;
+  --border: #e2e6f8;
+  --text2: #5a6282;
+  --text3: #9aa3c2;
+  --r: 16px;
+  --r2: 24px;
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Inter', sans-serif; /* was 'DM Sans' */
+  background: var(--ink);
+  color: var(--paper);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ═══ BG GRAIN TEXTURE ═══ */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.4;
+}
+
+/* ═══ HEADER ═══ */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 36px;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(11,15,26,.85);
+  backdrop-filter: blur(20px);
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.logo-mark {
+  width: 42px;
+  height: 42px;
+  background: linear-gradient(135deg, var(--blue), var(--pink));
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Poppins', sans-serif; /* was 'Syne' */
+  font-size: 20px;
+  font-weight: 800;
+  color: #fff;
+}
+.logo-text {
+  font-family: 'Poppins', sans-serif; /* was 'Syne' */
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+.logo-badge {
+  background: linear-gradient(90deg, var(--blue), var(--pink));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  border: 1px solid rgba(26,86,255,.3);
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.live-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(6,214,160,.1);
+  border: 1px solid rgba(6,214,160,.3);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--green);
+}
+.live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--green);
+  animation: livePulse 1.5s infinite;
+}
+@keyframes livePulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(.8)} }
+
+/* ═══ HERO ═══ */
+.hero {
+  text-align: center;
+  padding: 72px 36px 48px;
+  position: relative;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 300px;
+  background: radial-gradient(ellipse, rgba(26,86,255,.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,183,3,.08);
+  border: 1px solid rgba(255,183,3,.25);
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--gold);
+  margin-bottom: 22px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.hero h1 {
+  font-family: 'Poppins', sans-serif; /* was 'Syne' */
+  font-size: clamp(36px, 5vw, 62px);
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+.hero h1 .accent {
+  background: linear-gradient(90deg, var(--blue), var(--pink));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-sub {
+  font-size: 17px;
+  color: var(--text3);
+  max-width: 540px;
+  margin: 0 auto 36px;
+  line-height: 1.7;
+  font-weight: 400;
+}
+
+/* ═══ CONTROL BAR ═══ */
+.control-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 48px;
+}
+.ctrl-btn {
+  padding: 12px 24px;
+  border-radius: 30px;
+  border: 1.5px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.05);
+  color: rgba(255,255,255,.7);
+  font-family: 'Inter', sans-serif; /* was 'DM Sans' */
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all .25s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.ctrl-btn:hover {
+  border-color: var(--blue);
+  background: rgba(26,86,255,.1);
+  color: #fff;
+  transform: translateY(-2px);
+}
+.ctrl-btn.primary {
+  background: linear-gradient(135deg, var(--blue), #5a3fff);
+  border: none;
+  color: #fff;
+  box-shadow: 0 8px 28px rgba(26,86,255,.4);
+}
+.ctrl-btn.primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 36px rgba(26,86,255,.5);
+}
+.ctrl-btn.active {
+  border-color: var(--green);
+  color: var(--green);
+  background: rgba(6,214,160,.08);
+}
+
+/* ═══ MAIN DEMO AREA ═══ */
+.demo-area {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px 80px;
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 24px;
+}
+
+/* ═══ TIMELINE PANEL ═══ */
+.timeline-panel {
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: var(--r2);
+  padding: 24px;
+  height: fit-content;
+  position: sticky;
+  top: 90px;
+}
+.panel-title {
+  font-family: 'Poppins', sans-serif; /* was 'Syne' */
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--text3);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.tl-step {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 6px;
+  cursor: pointer;
+  transition: all .2s;
+}
+.tl-step:hover .tl-step-label { color: #fff; }
+.tl-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.tl-num {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text3);
+  flex-shrink: 0;
+  transition: all .3s;
+  font-family: 'JetBrains Mono', monospace;
+}
+.tl-num.done {
+  background: var(--green);
+  border-color: var(--green);
+  color: var(--ink);
+}
+.tl-num.active {
+  background: var(--blue);
+  border-color: var(--blue);
+  color: #fff;
+  box-shadow: 0 0 0 6px rgba(26,86,255,.2);
+  animation: activeGlow 2s infinite;
+}
+@keyframes activeGlow { 0%,100%{box-shadow:0 0 0 6px rgba(26,86,255,.2)} 50%{box-shadow:0 0 0 10px rgba(26,86,255,.05)} }
+.tl-line {
+  width: 2px;
+  flex: 1;
+  min-height: 20px;
+  background: rgba(255,255,255,.07);
+  margin: 4px 0;
+  border-radius: 2px;
+  transition: background .5s;
+}
+.tl-line.done { background: var(--green); }
+.tl-step-content { padding-top: 6px; flex: 1; }
+.tl-step-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255,255,255,.5);
+  transition: color .3s;
+  margin-bottom: 2px;
+}
+.tl-step-label.active { color: #fff; }
+.tl-step-label.done { color: var(--green); }
+.tl-step-sub {
+  font-size: 12px;
+  color: var(--text3);
+  line-height: 1.5;
+}
+
+/* Progress Bar */
+.overall-progress {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,.07);
+}
+.prog-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--text3);
+  margin-bottom: 8px;
+}
+.prog-track {
+  height: 6px;
+  background: rgba(255,255,255,.07);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.prog-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--blue), var(--green));
+  border-radius: 10px;
+  transition: width 1s ease;
+  width: 0%;
+}
+.speed-control {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,.07);
+}
+.speed-label {
+  font-size: 12px;
+  color: var(--text3);
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+.speed-btns {
+  display: flex;
+  gap: 6px;
+}
+.speed-btn {
+  flex: 1;
+  padding: 6px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,.1);
+  background: rgba(255,255,255,.04);
+  color: var(--text3);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all .2s;
+  font-family: 'JetBrains Mono', monospace;
+}
+.speed-btn:hover, .speed-btn.active {
+  border-color: var(--blue);
+  color: var(--blue);
+  background: rgba(26,86,255,.1);
+}
+
+/* ═══ MAIN STAGE ═══ */
+.main-stage {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ═══ SCENE CARD ═══ */
+.scene-card {
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: var(--r2);
+  overflow: hidden;
+  transition: all .4s;
+  opacity: 0.35;
+  transform: translateY(8px);
+}
+.scene-card.active {
+  opacity: 1;
+  transform: translateY(0);
+  border-color: rgba(26,86,255,.35);
+  box-shadow: 0 0 0 1px rgba(26,86,255,.15), 0 24px 60px rgba(26,86,255,.1);
+}
+.scene-card.done {
+  opacity: 0.65;
+  transform: translateY(0);
+  border-color: rgba(6,214,160,.2);
+}
+
+.scene-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 22px;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  background: rgba(255,255,255,.02);
+}
+.scene-header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.scene-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+.scene-title {
+  font-family: 'Poppins', sans-serif; /* was 'Syne' */
+  font-size: 16px;
+  font-weight: 800;
+}
+.scene-desc { font-size: 12.5px; color: var(--text3); margin-top: 2px; }
+
+.status-chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+}
+.chip-waiting { background: rgba(255,255,255,.05); color: var(--text3); border: 1px solid rgba(255,255,255,.08); }
+.chip-active { background: rgba(26,86,255,.15); color: #7da4ff; border: 1px solid rgba(26,86,255,.3); animation: chipPulse 2s infinite; }
+@keyframes chipPulse { 0%,100%{opacity:1} 50%{opacity:.7} }
+.chip-done { background: rgba(6,214,160,.1); color: var(--green); border: 1px solid rgba(6,214,160,.25); }
+
+.scene-body { padding: 22px; }
+
+/* ═══ SCENE 1: SURPRISE PLANNER ═══ */
+.planner-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+.form-field label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--text3);
+  margin-bottom: 7px;
+}
+.form-input {
+  width: 100%;
+  background: rgba(255,255,255,.05);
+  border: 1.5px solid rgba(255,255,255,.1);
+  border-radius: 11px;
+  padding: 10px 14px;
+  color: #fff;
+  font-family: 'Inter', sans-serif; /* was 'DM Sans' */
+  font-size: 14px;
+  font-weight: 500;
+  transition: all .3s;
+}
+.form-input.typing {
+  border-color: rgba(26,86,255,.5);
+  background: rgba(26,86,255,.06);
+  box-shadow: 0 0 0 3px rgba(26,86,255,.1);
+}
+.form-input.done {
+  border-color: rgba(6,214,160,.35);
+  background: rgba(6,214,160,.05);
+}
+
+.countdown-display {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: linear-gradient(135deg, rgba(26,86,255,.12), rgba(255,75,216,.08));
+  border-radius: var(--r);
+  border: 1px solid rgba(26,86,255,.2);
+  margin-top: 14px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all .5s;
+}
+.countdown-display.show { opacity: 1; transform: translateY(0); }
+.cd-unit { text-align: center; }
+.cd-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 38px;
+  font-weight: 600;
+  color: #fff;
+  display: block;
+  background: rgba(255,255,255,.06);
+  border-radius: 10px;
+  padding: 8px 14px;
+  min-width: 72px;
+  border: 1px solid rgba(255,255,255,.1);
+}
+.cd-lbl { font-size: 10px; text-transform: uppercase; letter-spacing: .1em; color: var(--text3); margin-top: 5px; }
+.cd-sep { font-size: 28px; color: var(--text3); padding-bottom: 16px; }
+
+.guest-list { margin-top: 18px; }
+.guest-list-title {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--text3);
+  margin-bottom: 12px;
+}
+.guest-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: rgba(255,255,255,.03);
+  border-radius: 10px;
+  margin-bottom: 7px;
+  border: 1px solid rgba(255,255,255,.06);
+  opacity: 0;
+  transform: translateX(-12px);
+  transition: all .4s;
+}
+.guest-row.appear { opacity: 1; transform: translateX(0); }
+.guest-av {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+.guest-name { font-size: 13.5px; font-weight: 600; flex: 1; }
+.guest-contact { font-size: 12px; color: var(--text3); }
+.guest-status { font-size: 12px; padding: 3px 9px; border-radius: 20px; font-weight: 700; }
+.gs-invited { background: rgba(26,86,255,.15); color: #7da4ff; }
+.gs-sent { background: rgba(6,214,160,.12); color: var(--green); }
+
+/* ═══ SCENE 2: INVITE SYSTEM ═══ */
+.invite-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+.invite-tab {
+  padding: 8px 18px;
+  border-radius: 20px;
+  border: 1.5px solid rgba(255,255,255,.1);
+  background: rgba(255,255,255,.04);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text3);
+  cursor: pointer;
+  transition: all .2s;
+}
+.invite-tab.active { background: rgba(26,86,255,.15); border-color: rgba(26,86,255,.4); color: #fff; }
+
+.invite-preview {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+.wa-card {
+  background: linear-gradient(135deg, #075e54, #128c7e);
+  border-radius: var(--r);
+  padding: 18px;
+  position: relative;
+  overflow: hidden;
+}
+.wa-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.wa-header { font-size: 12px; opacity: .65; text-transform: uppercase; letter-spacing: .1em; margin-bottom: 10px; }
+.wa-bubble {
+  background: rgba(255,255,255,.14);
+  border-radius: 12px 12px 12px 3px;
+  padding: 12px 14px;
+  font-size: 13px;
+  line-height: 1.65;
+  color: #fff;
+}
+.wa-typing {
+  display: none;
+  align-items: center;
+  gap: 4px;
+  padding: 10px 14px;
+  background: rgba(255,255,255,.1);
+  border-radius: 12px 12px 12px 3px;
+  margin-bottom: 8px;
+}
+.wa-typing.show { display: flex; }
+.wa-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.6);
+  animation: typingBounce .8s infinite;
+}
+.wa-dot:nth-child(2) { animation-delay: .1s; }
+.wa-dot:nth-child(3) { animation-delay: .2s; }
+@keyframes typingBounce { 0%,80%,100%{transform:translateY(0)} 40%{transform:translateY(-6px)} }
+
+.email-card {
+  background: rgba(255,255,255,.97);
+  border-radius: var(--r);
+  padding: 18px;
+  color: var(--ink);
+}
+.email-header-bar {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+}
+.email-from { font-size: 11px; color: #888; margin-bottom: 3px; }
+.email-subject { font-size: 14px; font-weight: 700; color: var(--ink); }
+.email-body { font-size: 12.5px; color: #333; line-height: 1.65; margin-bottom: 12px; }
+.email-cta {
+  background: linear-gradient(135deg, var(--blue), #5a3fff);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif; /* was 'DM Sans' */
+}
+
+/* Invite Stats */
+.invite-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.inv-stat {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: var(--r);
+  padding: 14px;
+  text-align: center;
+  transition: all .4s;
+}
+.inv-stat.highlight {
+  background: rgba(26,86,255,.1);
+  border-color: rgba(26,86,255,.3);
+}
+.inv-stat-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 26px;
+  font-weight: 600;
+  color: #fff;
+  display: block;
+}
+.inv-stat-lbl { font-size: 11px; color: var(--text3); margin-top: 3px; font-weight: 600; }
+
+/* Tracker table */
+.tracker-table { width: 100%; border-collapse: collapse; }
+.tracker-table th {
+  text-align: left;
+  padding: 9px 14px;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--text3);
+  border-bottom: 1px solid rgba(255,255,255,.07);
+}
+.tracker-table td {
+  padding: 11px 14px;
+  font-size: 13.5px;
+  border-bottom: 1px solid rgba(255,255,255,.05);
+  transition: all .3s;
+}
+.tracker-table tr:last-child td { border-bottom: none; }
+.tracker-table tr:hover td { background: rgba(255,255,255,.02); }
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 9px;
+  border-radius: 20px;
+  font-size: 11.5px;
+  font-weight: 700;
+}
+.chip-green { background: rgba(6,214,160,.12); color: var(--green); }
+.chip-blue { background: rgba(26,86,255,.12); color: #7da4ff; }
+.chip-gold { background: rgba(255,183,3,.12); color: var(--gold); }
+.chip-red { background: rgba(255,70,70,.1); color: #ff7070; }
+.chip-gray { background: rgba(255,255,255,.06); color: var(--text3); }
+
+/* ═══ SCENE 3: WISH COLLECTION ═══ */
+.wish-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 18px;
+}
+.wish-type-card {
+  background: rgba(255,255,255,.04);
+  border: 2px solid rgba(255,255,255,.08);
+  border-radius: var(--r);
+  padding: 18px;
+  text-align: center;
+  cursor: pointer;
+  transition: all .3s;
+}
+.wish-type-card.selected {
+  border-color: var(--blue);
+  background: rgba(26,86,255,.1);
+  box-shadow: 0 0 0 4px rgba(26,86,255,.1);
+}
+.wish-type-icon { font-size: 28px; margin-bottom: 8px; }
+.wish-type-lbl { font-size: 14px; font-weight: 700; }
+.wish-type-sub { font-size: 11.5px; color: var(--text3); margin-top: 3px; }
+
+.rec-zone {
+  background: rgba(255,255,255,.03);
+  border: 2px dashed rgba(255,255,255,.1);
+  border-radius: var(--r);
+  padding: 28px;
+  text-align: center;
+  margin-bottom: 14px;
+}
+.rec-btn-demo {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  border: none;
+  background: linear-gradient(135deg, #ef476f, #c93656);
+  cursor: pointer;
+  font-size: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  transition: all .3s;
+  box-shadow: 0 6px 20px rgba(239,71,111,.3);
+}
+.rec-btn-demo.recording {
+  animation: recPulse 1.5s infinite;
+}
+@keyframes recPulse { 0%{box-shadow:0 0 0 0 rgba(239,71,111,.6)} 70%{box-shadow:0 0 0 20px rgba(239,71,111,0)} 100%{box-shadow:0 0 0 0 rgba(239,71,111,0)} }
+.rec-status { font-size: 14px; color: var(--text3); margin-top: 6px; }
+.rec-timer {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #ff6b6b;
+  margin-top: 6px;
+  display: none;
+}
+
+/* Wish Feed */
+.wish-feed { display: flex; flex-direction: column; gap: 8px; }
+.wish-item {
+  display: flex;
+  gap: 11px;
+  align-items: flex-start;
+  padding: 12px 14px;
+  background: rgba(255,255,255,.04);
+  border-radius: 11px;
+  border: 1px solid rgba(255,255,255,.07);
+  opacity: 0;
+  transform: translateX(-12px);
+  transition: all .5s;
+}
+.wish-item.appear { opacity: 1; transform: translateX(0); }
+.wish-av-sm {
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+.wish-item-name { font-size: 13.5px; font-weight: 700; }
+.wish-item-time { font-size: 11px; color: var(--text3); margin: 2px 0 4px; }
+.wish-item-content { font-size: 13px; color: rgba(255,255,255,.7); line-height: 1.5; }
+
+/* Progress ring */
+.progress-ring-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+}
+.ring-container { position: relative; width: 120px; height: 120px; }
+.ring-svg { transform: rotate(-90deg); }
+.ring-bg { fill: none; stroke: rgba(255,255,255,.08); stroke-width: 10; }
+.ring-fill { fill: none; stroke: var(--blue); stroke-width: 10; stroke-linecap: round; transition: stroke-dashoffset 1s ease; }
+.ring-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.ring-pct { font-family: 'JetBrains Mono', monospace; font-size: 22px; font-weight: 600; }
+.ring-sub { font-size: 11px; color: var(--text3); text-align: center; margin-top: 2px; }
+
+/* ═══ SCENE 4: VIDEO STUDIO ═══ */
+.video-player {
+  background: #050508;
+  border-radius: var(--r);
+  aspect-ratio: 16/9;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+.video-bg-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(26,86,255,.2), rgba(181,23,158,.2));
+  transition: opacity .8s;
+}
+.video-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.video-emoji { font-size: 52px; margin-bottom: 14px; animation: floatEmoji 3s ease-in-out infinite; }
+@keyframes floatEmoji { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+.video-title {
+  font-family: 'Poppins', sans-serif; /* was 'Syne' */
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--gold);
+  text-align: center;
+  text-shadow: 0 2px 20px rgba(255,183,3,.4);
+}
+.video-subtitle { font-size: 13px; opacity: .6; margin-top: 6px; }
+.video-play-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--blue), #5a3fff);
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  color: #fff;
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(26,86,255,.4);
+  transition: transform .2s;
+}
+.video-play-btn:hover { transform: scale(1.1); }
+
+/* Compilation progress */
+.compile-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.compile-step {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: rgba(255,255,255,.03);
+  border-radius: 11px;
+  border: 1px solid rgba(255,255,255,.06);
+  font-size: 13.5px;
+  opacity: 0.4;
+  transition: all .4s;
+}
+.compile-step.active { opacity: 1; border-color: rgba(26,86,255,.3); background: rgba(26,86,255,.07); }
+.compile-step.done { opacity: 0.8; border-color: rgba(6,214,160,.2); }
+.compile-step-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  flex-shrink: 0;
+}
+.compile-progress-bar {
+  height: 5px;
+  background: rgba(255,255,255,.07);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 6px;
+}
+.compile-prog-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--blue), var(--pink));
+  border-radius: 10px;
+  width: 0%;
+  transition: width .5s ease;
+}
+
+/* Upload platforms */
+.upload-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 14px;
+}
+.upload-platform {
+  background: rgba(255,255,255,.04);
+  border: 1.5px solid rgba(255,255,255,.08);
+  border-radius: var(--r);
+  padding: 14px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all .3s;
+  opacity: 0.5;
+}
+.upload-platform.uploading {
+  opacity: 1;
+  border-color: rgba(26,86,255,.4);
+  animation: uploadPulse 1s infinite;
+}
+@keyframes uploadPulse { 0%,100%{background:rgba(26,86,255,.05)} 50%{background:rgba(26,86,255,.12)} }
+.upload-platform.done {
+  opacity: 1;
+  border-color: rgba(6,214,160,.35);
+  background: rgba(6,214,160,.08);
+}
+.upload-icon { font-size: 26px; margin-bottom: 6px; }
+.upload-prog { height: 4px; background: rgba(255,255,255,.1); border-radius: 10px; margin-top: 8px; overflow: hidden; }
+.upload-prog-fill { height: 100%; border-radius: 10px; transition: width 2s ease; width: 0%; }
+
+/* ═══ SCENE 5: DELIVERY ═══ */
+.delivery-flow {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-bottom: 20px;
+  overflow-x: auto;
+}
+.del-step {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 90px;
+}
+.del-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  border: 2px solid rgba(255,255,255,.1);
+  background: rgba(255,255,255,.04);
+  transition: all .5s;
+  margin-bottom: 8px;
+}
+.del-icon.done { border-color: var(--green); background: rgba(6,214,160,.15); }
+.del-icon.active { border-color: var(--blue); background: rgba(26,86,255,.15); box-shadow: 0 0 0 6px rgba(26,86,255,.1); }
+.del-lbl { font-size: 11px; font-weight: 700; color: var(--text3); text-align: center; }
+.del-line {
+  flex: 0 0 40px;
+  height: 2px;
+  background: rgba(255,255,255,.07);
+  margin-bottom: 22px;
+  transition: background .8s;
+}
+.del-line.done { background: var(--green); }
+
+/* Delivery card */
+.delivery-card {
+  background: linear-gradient(135deg, rgba(26,86,255,.1), rgba(255,75,216,.06));
+  border: 1px solid rgba(26,86,255,.25);
+  border-radius: var(--r);
+  padding: 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+.del-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--blue), var(--pink));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+.del-name { font-size: 17px; font-weight: 700; margin-bottom: 2px; }
+.del-sub { font-size: 13px; color: var(--text3); }
+.del-eta {
+  margin-left: auto;
+  text-align: right;
+}
+.del-eta-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--green);
+}
+.del-eta-lbl { font-size: 11px; color: var(--text3); }
+
+/* ═══ NOTIFICATION STREAM ═══ */
+.notif-stream {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 300px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  pointer-events: none;
+}
+.notif {
+  background: rgba(18, 22, 38, 0.95);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 13px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  animation: notifIn .4s ease;
+  pointer-events: auto;
+}
+@keyframes notifIn { from{transform:translateX(110%);opacity:0} to{transform:translateX(0);opacity:1} }
+.notif-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+.notif-body { flex: 1; }
+.notif-msg { font-size: 13px; font-weight: 600; color: #fff; line-height: 1.4; }
+.notif-time { font-size: 10.5px; color: var(--text3); margin-top: 2px; }
+.notif.success { border-left: 3px solid var(--green); }
+.notif.info { border-left: 3px solid var(--blue); }
+.notif.warning { border-left: 3px solid var(--gold); }
+
+/* ═══ COMPLETION SCREEN ═══ */
+.completion-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(11,15,26,.9);
+  z-index: 10000;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(8px);
+}
+.completion-overlay.show { display: flex; }
+.completion-card {
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 28px;
+  padding: 52px;
+  text-align: center;
+  max-width: 520px;
+  animation: fadeUp .5s ease;
+}
+@keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+.completion-emoji { font-size: 72px; margin-bottom: 20px; animation: bounce 1s ease infinite alternate; }
+@keyframes bounce { from{transform:scale(1)} to{transform:scale(1.08)} }
+.completion-title {
+  font-family: 'Poppins', sans-serif; /* was 'Syne' */
+  font-size: 36px;
+  font-weight: 800;
+  margin-bottom: 10px;
+  background: linear-gradient(90deg, var(--gold), var(--green));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.completion-sub { font-size: 16px; color: var(--text3); margin-bottom: 30px; line-height: 1.6; }
+.confetti-btn {
+  padding: 15px 36px;
+  background: linear-gradient(135deg, var(--blue), var(--pink));
+  border: none;
+  border-radius: 30px;
+  font-family: 'Poppins', sans-serif; /* was 'Syne' */
+  font-size: 16px;
+  font-weight: 800;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 8px 28px rgba(26,86,255,.4);
+  transition: all .25s;
+}
+.confetti-btn:hover { transform: translateY(-3px); box-shadow: 0 14px 36px rgba(26,86,255,.5); }
+
+/* ═══ CONFETTI ═══ */
+.confetti-piece {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  pointer-events: none;
+  z-index: 99999;
+  animation: confettiFall linear forwards;
+}
+@keyframes confettiFall {
+  0% { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+
+/* ═══ RESPONSIVE ═══ */
+@media (max-width: 900px) {
+  .demo-area { grid-template-columns: 1fr; }
+  .timeline-panel { position: static; }
+  .planner-form { grid-template-columns: 1fr; }
+  .invite-preview { grid-template-columns: 1fr; }
+  .invite-stats { grid-template-columns: 1fr 1fr; }
+  .wish-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NOTIFICATION STREAM -->
+<div class="notif-stream" id="notifStream"></div>
+
+<!-- COMPLETION OVERLAY -->
+<div class="completion-overlay" id="completionOverlay">
+  <div class="completion-card">
+    <div class="completion-emoji">🎉</div>
+    <div class="completion-title">Surprise Delivered!</div>
+    <div class="completion-sub">Priya Sharma just received her birthday surprise video from 15 teammates. The entire journey — from planning to delivery — took just <strong style="color:#fff">4 minutes</strong> in demo mode.</div>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+      <button class="confetti-btn" onclick="restartDemo()">▶ Run Demo Again</button>
+      <button style="padding:15px 28px;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.15);border-radius:30px;color:#fff;font-family:'Poppins',sans-serif;font-size:15px;font-weight:700;cursor:pointer" onclick="hideCompletion()">✕ Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="logo">
+    <div class="logo-mark">D</div>
+    <div>
+      <div class="logo-text">DAKIYA</div>
+    </div>
+  </div>
+  <div style="display:flex;align-items:center;gap:10px">
+    <div class="logo-badge">Enterprise Demo</div>
+    <div class="live-badge"><div class="live-dot"></div> Live Simulation</div>
+  </div>
+  <div class="header-right">
+    <button class="ctrl-btn" onclick="restartDemo()">↺ Restart</button>
+    <button class="ctrl-btn primary" id="mainPlayBtn" onclick="startDemo()">▶ Start Full Demo</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-label">✦ Complete Automation Showcase</div>
+  <h1>Surprise Planner <span class="accent">→ Invite</span><br>→ Collect → <span class="accent">Compile → Deliver</span></h1>
+  <p class="hero-sub">Watch the entire celebration journey unfold — from creating a surprise event to auto-delivering the video — fully automated, in real time.</p>
+  <div class="control-bar">
+    <button class="ctrl-btn primary" id="heroPlayBtn" onclick="startDemo()">▶ Start Full Auto Demo</button>
+    <button class="ctrl-btn" onclick="jumpToScene(1)">1. Surprise Planner</button>
+    <button class="ctrl-btn" onclick="jumpToScene(2)">2. Invite System</button>
+    <button class="ctrl-btn" onclick="jumpToScene(3)">3. Wish Collection</button>
+    <button class="ctrl-btn" onclick="jumpToScene(4)">4. Video Studio</button>
+    <button class="ctrl-btn" onclick="jumpToScene(5)">5. Delivery</button>
+  </div>
+</div>
+
+<!-- DEMO AREA -->
+<div class="demo-area">
+
+  <!-- LEFT: TIMELINE -->
+  <div class="timeline-panel">
+    <div class="panel-title">📋 Demo Timeline</div>
+
+    <div class="tl-step" onclick="jumpToScene(1)">
+      <div class="tl-left">
+        <div class="tl-num" id="tln1">1</div>
+        <div class="tl-line" id="tll1"></div>
+      </div>
+      <div class="tl-step-content">
+        <div class="tl-step-label" id="tls1">Surprise Planner</div>
+        <div class="tl-step-sub">Fill event details, set countdown, invite guests</div>
+      </div>
+    </div>
+
+    <div class="tl-step" onclick="jumpToScene(2)">
+      <div class="tl-left">
+        <div class="tl-num" id="tln2">2</div>
+        <div class="tl-line" id="tll2"></div>
+      </div>
+      <div class="tl-step-content">
+        <div class="tl-step-label" id="tls2">Invite System</div>
+        <div class="tl-step-sub">WhatsApp + Email AI-personalised invites</div>
+      </div>
+    </div>
+
+    <div class="tl-step" onclick="jumpToScene(3)">
+      <div class="tl-left">
+        <div class="tl-num" id="tln3">3</div>
+        <div class="tl-line" id="tll3"></div>
+      </div>
+      <div class="tl-step-content">
+        <div class="tl-step-label" id="tls3">Wish Collection</div>
+        <div class="tl-step-sub">Video, audio & text wishes arrive live</div>
+      </div>
+    </div>
+
+    <div class="tl-step" onclick="jumpToScene(4)">
+      <div class="tl-left">
+        <div class="tl-num" id="tln4">4</div>
+        <div class="tl-line" id="tll4"></div>
+      </div>
+      <div class="tl-step-content">
+        <div class="tl-step-label" id="tls4">AI Video Studio</div>
+        <div class="tl-step-sub">Auto-compile, music, effects, upload</div>
+      </div>
+    </div>
+
+    <div class="tl-step" onclick="jumpToScene(5)">
+      <div class="tl-left">
+        <div class="tl-num" id="tln5">5</div>
+      </div>
+      <div class="tl-step-content">
+        <div class="tl-step-label" id="tls5">Surprise Delivery</div>
+        <div class="tl-step-sub">Auto-delivered on celebration day</div>
+      </div>
+    </div>
+
+    <div class="overall-progress">
+      <div class="prog-label">
+        <span>Overall Progress</span>
+        <span id="progPct">0%</span>
+      </div>
+      <div class="prog-track">
+        <div class="prog-fill" id="overallProg"></div>
+      </div>
+    </div>
+
+    <div class="speed-control">
+      <div class="speed-label">Demo Speed</div>
+      <div class="speed-btns">
+        <button class="speed-btn" onclick="setSpeed(2)">0.5×</button>
+        <button class="speed-btn active" id="spd1x" onclick="setSpeed(1)">1×</button>
+        <button class="speed-btn" onclick="setSpeed(0.5)">2×</button>
+        <button class="speed-btn" onclick="setSpeed(0.25)">4×</button>
+      </div>
+    </div>
+
+    <!-- Live stats -->
+    <div style="margin-top:18px;padding-top:16px;border-top:1px solid rgba(255,255,255,.07)">
+      <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--text3);margin-bottom:12px">Live Metrics</div>
+      <div style="display:flex;flex-direction:column;gap:8px;font-size:13px">
+        <div style="display:flex;justify-content:space-between">
+          <span style="color:var(--text3)">Wishes Collected</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-weight:600" id="metricWishes">0/15</span>
+        </div>
+        <div style="display:flex;justify-content:space-between">
+          <span style="color:var(--text3)">Invites Sent</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-weight:600" id="metricInvites">0</span>
+        </div>
+        <div style="display:flex;justify-content:space-between">
+          <span style="color:var(--text3)">Response Rate</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-weight:600" id="metricRate">—</span>
+        </div>
+        <div style="display:flex;justify-content:space-between">
+          <span style="color:var(--text3)">Video Status</span>
+          <span style="font-size:12px;font-weight:600" id="metricVideo">Pending</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT: SCENES -->
+  <div class="main-stage">
+
+    <!-- ── SCENE 1: SURPRISE PLANNER ── -->
+    <div class="scene-card" id="scene1">
+      <div class="scene-header">
+        <div class="scene-header-left">
+          <div class="scene-icon" style="background:linear-gradient(135deg,rgba(26,86,255,.3),rgba(90,63,255,.3))">🎉</div>
+          <div>
+            <div class="scene-title">SURPRISE PLANNER</div>
+            <div class="scene-desc">Create a 30-day automated surprise event</div>
+          </div>
+        </div>
+        <div class="status-chip chip-waiting" id="sc1status">⏳ Waiting</div>
+      </div>
+      <div class="scene-body">
+        <div class="planner-form">
+          <div class="form-field">
+            <label>Celebrant Name</label>
+            <input class="form-input" id="f_name" readonly placeholder="Priya Sharma" value="">
+          </div>
+          <div class="form-field">
+            <label>Occasion</label>
+            <input class="form-input" id="f_type" readonly placeholder="Birthday" value="">
+          </div>
+          <div class="form-field">
+            <label>Celebration Date</label>
+            <input class="form-input" id="f_date" readonly placeholder="Dec 31, 2025" value="">
+          </div>
+        </div>
+
+        <div class="countdown-display" id="cdDisplay">
+          <div class="cd-unit"><span class="cd-num" id="cd_d">12</span><div class="cd-lbl">Days</div></div>
+          <div class="cd-sep">:</div>
+          <div class="cd-unit"><span class="cd-num" id="cd_h">08</span><div class="cd-lbl">Hours</div></div>
+          <div class="cd-sep">:</div>
+          <div class="cd-unit"><span class="cd-num" id="cd_m">34</span><div class="cd-lbl">Minutes</div></div>
+        </div>
+
+        <div class="guest-list" id="guestListArea" style="display:none">
+          <div class="guest-list-title">👥 Contributors Invited (15 teammates)</div>
+          <div id="guestRows"></div>
+        </div>
+
+        <div id="s1_launched" style="display:none;margin-top:16px">
+          <div style="background:rgba(6,214,160,.08);border:1px solid rgba(6,214,160,.2);border-radius:var(--r);padding:14px;display:flex;align-items:center;gap:12px">
+            <span style="font-size:24px">🚀</span>
+            <div>
+              <div style="font-weight:700;font-size:14px;color:var(--green)">Surprise Event Launched!</div>
+              <div style="font-size:13px;color:var(--text3);margin-top:2px">AI will auto-collect wishes for 28 days, then compile & deliver on Dec 31 at 9:00 AM</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SCENE 2: INVITE SYSTEM ── -->
+    <div class="scene-card" id="scene2">
+      <div class="scene-header">
+        <div class="scene-header-left">
+          <div class="scene-icon" style="background:linear-gradient(135deg,rgba(6,214,160,.2),rgba(26,86,255,.2))">📨</div>
+          <div>
+            <div class="scene-title">INVITE SYSTEM</div>
+            <div class="scene-desc">WhatsApp + Email · AI-personalised for each recipient</div>
+          </div>
+        </div>
+        <div class="status-chip chip-waiting" id="sc2status">⏳ Waiting</div>
+      </div>
+      <div class="scene-body">
+        <div class="invite-stats">
+          <div class="inv-stat" id="is_sent">
+            <span class="inv-stat-num" id="is_sent_n">0</span>
+            <div class="inv-stat-lbl">Invites Sent</div>
+          </div>
+          <div class="inv-stat" id="is_opened">
+            <span class="inv-stat-num" id="is_opened_n">0</span>
+            <div class="inv-stat-lbl">Opened</div>
+          </div>
+          <div class="inv-stat" id="is_resp">
+            <span class="inv-stat-num" id="is_resp_n">0%</span>
+            <div class="inv-stat-lbl">Response Rate</div>
+          </div>
+          <div class="inv-stat" id="is_ai">
+            <span class="inv-stat-num">AI</span>
+            <div class="inv-stat-lbl">Personalised</div>
+          </div>
+        </div>
+
+        <div class="invite-preview">
+          <div class="wa-card">
+            <div class="wa-header">💬 WhatsApp Preview</div>
+            <div class="wa-typing" id="waTyping">
+              <div class="wa-dot"></div><div class="wa-dot"></div><div class="wa-dot"></div>
+            </div>
+            <div class="wa-bubble" id="waBubble" style="display:none">
+              Hey <b>Rahul</b>! 👋<br><br>
+              I'm organising a surprise <b>Birthday</b> for <b>Priya Sharma</b>! 🎂<br><br>
+              Could you record a short video wish? Takes just 2 minutes!<br><br>
+              📅 Deadline: Dec 29<br>
+              🎬 Your clip = part of the surprise video!<br><br>
+              👉 <span style="color:#a8e6cf;text-decoration:underline">Tap here →</span>
+            </div>
+          </div>
+          <div class="email-card">
+            <div class="email-header-bar">
+              <div class="email-from">From: Dakiya Platform &lt;hello@dakiya.app&gt;</div>
+              <div class="email-subject" id="emailSubject" style="opacity:0.3">🎉 Help surprise Priya for her Birthday!</div>
+            </div>
+            <div class="email-body" id="emailBody" style="opacity:0.3">
+              Hi Rahul,<br><br>
+              We're creating a wonderful surprise video for <b>Priya's birthday on Dec 31st</b>!<br><br>
+              Click below → Record video/audio/text → We compile the surprise!<br><br>
+              ⏰ Deadline: <b>December 29th</b>
+            </div>
+            <button class="email-cta">💌 Send Your Wish →</button>
+          </div>
+        </div>
+
+        <div style="overflow-x:auto">
+          <table class="tracker-table">
+            <thead>
+              <tr>
+                <th>Contributor</th>
+                <th>Channel</th>
+                <th>Sent</th>
+                <th>Opened</th>
+                <th>Wish</th>
+              </tr>
+            </thead>
+            <tbody id="trackerBody">
+              <!-- rows injected by JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SCENE 3: WISH COLLECTION ── -->
+    <div class="scene-card" id="scene3">
+      <div class="scene-header">
+        <div class="scene-header-left">
+          <div class="scene-icon" style="background:linear-gradient(135deg,rgba(255,75,216,.25),rgba(255,183,3,.15))">💌</div>
+          <div>
+            <div class="scene-title">WISH COLLECTION</div>
+            <div class="scene-desc">Live feed as video, audio & text wishes come in</div>
+          </div>
+        </div>
+        <div class="status-chip chip-waiting" id="sc3status">⏳ Waiting</div>
+      </div>
+      <div class="scene-body">
+        <div style="display:grid;grid-template-columns:1fr auto;gap:20px;align-items:start">
+          <div>
+            <div class="wish-grid">
+              <div class="wish-type-card" id="wt_video"><div class="wish-type-icon">🎥</div><div class="wish-type-lbl">Video Wish</div><div class="wish-type-sub">Record yourself</div></div>
+              <div class="wish-type-card" id="wt_audio"><div class="wish-type-icon">🎙️</div><div class="wish-type-lbl">Audio Wish</div><div class="wish-type-sub">Voice message</div></div>
+              <div class="wish-type-card" id="wt_text"><div class="wish-type-icon">✍️</div><div class="wish-type-lbl">Text Wish</div><div class="wish-type-sub">Write message</div></div>
+            </div>
+
+            <div class="rec-zone" id="recZone">
+              <button class="rec-btn-demo" id="recBtnDemo">🎥</button>
+              <div class="rec-status" id="recStatusTxt">Press to record your video wish</div>
+              <div class="rec-timer" id="recTimerDisp">0:00</div>
+            </div>
+
+            <div style="margin-top:14px">
+              <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text3);margin-bottom:10px">Live Wish Feed</div>
+              <div class="wish-feed" id="wishFeed"></div>
+            </div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;align-items:center">
+            <div class="progress-ring-wrap">
+              <div class="ring-container">
+                <svg class="ring-svg" width="120" height="120" viewBox="0 0 120 120">
+                  <circle class="ring-bg" cx="60" cy="60" r="52"/>
+                  <circle class="ring-fill" id="wishRingFill" cx="60" cy="60" r="52" stroke-dasharray="327" stroke-dashoffset="327"/>
+                </svg>
+                <div class="ring-text">
+                  <div class="ring-pct" id="wishPct">0%</div>
+                  <div class="ring-sub" id="wishCount">0/15</div>
+                </div>
+              </div>
+            </div>
+            <div style="text-align:center;font-size:12px;color:var(--text3)">Collection<br>Progress</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SCENE 4: VIDEO STUDIO ── -->
+    <div class="scene-card" id="scene4">
+      <div class="scene-header">
+        <div class="scene-header-left">
+          <div class="scene-icon" style="background:linear-gradient(135deg,rgba(255,183,3,.2),rgba(255,75,216,.15))">🎬</div>
+          <div>
+            <div class="scene-title">AI VIDEO STUDIO</div>
+            <div class="scene-desc">Auto-compile all wishes into a cinematic surprise video</div>
+          </div>
+        </div>
+        <div class="status-chip chip-waiting" id="sc4status">⏳ Waiting</div>
+      </div>
+      <div class="scene-body">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+          <div>
+            <div class="video-player" id="videoPlayer">
+              <div class="video-bg-gradient" id="videoBg"></div>
+              <div class="video-content">
+                <div class="video-emoji">🎂</div>
+                <div class="video-title">Happy Birthday, Priya!</div>
+                <div class="video-subtitle" style="color:rgba(255,255,255,.5)">From Rahul, Ananya, Meena + 12 more</div>
+                <button class="video-play-btn" id="videoPlayBtn" style="display:none" onclick="notify('▶ Video preview playing — 2:34 duration','info')">▶</button>
+              </div>
+            </div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap">
+              <span style="background:rgba(26,86,255,.1);border:1px solid rgba(26,86,255,.25);padding:4px 11px;border-radius:20px;font-size:12px;font-weight:600;color:#7da4ff">🎵 AI: Happy Birthday Instrumental</span>
+              <span style="background:rgba(255,183,3,.08);border:1px solid rgba(255,183,3,.2);padding:4px 11px;border-radius:20px;font-size:12px;font-weight:600;color:var(--gold)" id="themeChip">🌅 Warm & Heartfelt</span>
+              <span style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);padding:4px 11px;border-radius:20px;font-size:12px;font-weight:600;color:var(--text3)" id="durationChip">⏱ 0:00</span>
+            </div>
+          </div>
+
+          <div>
+            <div style="font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--text3);margin-bottom:12px">AI Compilation Steps</div>
+            <div class="compile-steps">
+              <div class="compile-step" id="cs1">
+                <div class="compile-step-icon" style="background:rgba(26,86,255,.15)">🔍</div>
+                <div style="flex:1">
+                  <div style="font-weight:600">Analysing 15 clips</div>
+                  <div class="compile-progress-bar"><div class="compile-prog-fill" id="cp1"></div></div>
+                </div>
+              </div>
+              <div class="compile-step" id="cs2">
+                <div class="compile-step-icon" style="background:rgba(255,75,216,.1)">✂️</div>
+                <div style="flex:1">
+                  <div style="font-weight:600">Trimming & sequencing</div>
+                  <div class="compile-progress-bar"><div class="compile-prog-fill" id="cp2"></div></div>
+                </div>
+              </div>
+              <div class="compile-step" id="cs3">
+                <div class="compile-step-icon" style="background:rgba(255,183,3,.1)">🎵</div>
+                <div style="flex:1">
+                  <div style="font-weight:600">Adding music & transitions</div>
+                  <div class="compile-progress-bar"><div class="compile-prog-fill" id="cp3"></div></div>
+                </div>
+              </div>
+              <div class="compile-step" id="cs4">
+                <div class="compile-step-icon" style="background:rgba(6,214,160,.1)">✨</div>
+                <div style="flex:1">
+                  <div style="font-weight:600">Text overlays & effects</div>
+                  <div class="compile-progress-bar"><div class="compile-prog-fill" id="cp4"></div></div>
+                </div>
+              </div>
+              <div class="compile-step" id="cs5">
+                <div class="compile-step-icon" style="background:rgba(255,255,255,.06)">📤</div>
+                <div style="flex:1">
+                  <div style="font-weight:600">Export 1080p HD · Upload</div>
+                  <div class="compile-progress-bar"><div class="compile-prog-fill" id="cp5"></div></div>
+                </div>
+              </div>
+            </div>
+
+            <div style="margin-top:16px">
+              <div style="font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--text3);margin-bottom:10px">Upload to Platforms</div>
+              <div class="upload-grid">
+                <div class="upload-platform" id="up_yt">
+                  <div class="upload-icon">📺</div>
+                  <div style="font-weight:700;font-size:13px">YouTube</div>
+                  <div class="upload-prog"><div class="upload-prog-fill" id="up_yt_p" style="background:#ff0000"></div></div>
+                </div>
+                <div class="upload-platform" id="up_ig">
+                  <div class="upload-icon">📸</div>
+                  <div style="font-weight:700;font-size:13px">Instagram</div>
+                  <div class="upload-prog"><div class="upload-prog-fill" id="up_ig_p" style="background:linear-gradient(90deg,#f09433,#e6683c,#dc2743,#cc2366)"></div></div>
+                </div>
+                <div class="upload-platform" id="up_wa">
+                  <div class="upload-icon">💬</div>
+                  <div style="font-weight:700;font-size:13px">WhatsApp</div>
+                  <div class="upload-prog"><div class="upload-prog-fill" id="up_wa_p" style="background:#25D366"></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SCENE 5: DELIVERY ── -->
+    <div class="scene-card" id="scene5">
+      <div class="scene-header">
+        <div class="scene-header-left">
+          <div class="scene-icon" style="background:linear-gradient(135deg,rgba(6,214,160,.25),rgba(26,86,255,.15))">🚀</div>
+          <div>
+            <div class="scene-title">SURPRISE DELIVERY</div>
+            <div class="scene-desc">Auto-delivered to Priya on her birthday, Dec 31 at 9:00 AM</div>
+          </div>
+        </div>
+        <div class="status-chip chip-waiting" id="sc5status">⏳ Waiting</div>
+      </div>
+      <div class="scene-body">
+        <div class="delivery-flow">
+          <div class="del-step">
+            <div class="del-icon" id="deli1">📅</div>
+            <div class="del-lbl">Event Day<br>Triggered</div>
+          </div>
+          <div class="del-line" id="dell1"></div>
+          <div class="del-step">
+            <div class="del-icon" id="deli2">🎬</div>
+            <div class="del-lbl">Video<br>Retrieved</div>
+          </div>
+          <div class="del-line" id="dell2"></div>
+          <div class="del-step">
+            <div class="del-icon" id="deli3">💌</div>
+            <div class="del-lbl">Personalised<br>Message</div>
+          </div>
+          <div class="del-line" id="dell3"></div>
+          <div class="del-step">
+            <div class="del-icon" id="deli4">📱</div>
+            <div class="del-lbl">Delivered<br>to Priya</div>
+          </div>
+          <div class="del-line" id="dell4"></div>
+          <div class="del-step">
+            <div class="del-icon" id="deli5">⭐</div>
+            <div class="del-lbl">Reaction<br>Collected</div>
+          </div>
+        </div>
+
+        <div class="delivery-card" id="deliveryCard" style="opacity:0.3">
+          <div class="del-avatar">P</div>
+          <div>
+            <div class="del-name">Priya Sharma</div>
+            <div class="del-sub">Birthday · Dec 31 · Finance Dept</div>
+            <div style="margin-top:6px;display:flex;gap:6px;flex-wrap:wrap">
+              <span class="chip chip-gray" id="del_chip1">🎬 Video pending</span>
+              <span class="chip chip-gray" id="del_chip2">💬 WhatsApp pending</span>
+              <span class="chip chip-gray" id="del_chip3">📺 YouTube pending</span>
+            </div>
+          </div>
+          <div class="del-eta">
+            <div class="del-eta-num" id="delEtaNum">—</div>
+            <div class="del-eta-lbl">Delivery Status</div>
+          </div>
+        </div>
+
+        <div id="deliveryMsg" style="display:none;background:linear-gradient(135deg,rgba(6,214,160,.1),rgba(26,86,255,.06));border:1px solid rgba(6,214,160,.25);border-radius:var(--r);padding:18px">
+          <div style="font-size:13px;font-weight:700;color:var(--green);margin-bottom:8px">🤖 Auto-Delivery Message — Sent to Priya at 9:00 AM</div>
+          <div style="background:rgba(0,0,0,.2);border-radius:10px;padding:14px;font-size:13.5px;line-height:1.7;color:rgba(255,255,255,.85)">
+            "🎉 <b>Happy Birthday, Priya!</b><br><br>
+            Your team put together something special for you. Watch your surprise video here:<br>
+            🎬 <span style="color:#7da4ff;text-decoration:underline">youtube.com/watch?v=dakiya-priya-bday-2025</span><br><br>
+            With love from Rahul, Ananya, Meena & 12 others! 🎂🎊"
+          </div>
+          <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+            <span class="chip chip-green">✅ WhatsApp Delivered</span>
+            <span class="chip chip-blue">✅ Email Delivered</span>
+            <span class="chip chip-gold">⭐ Rating: 5.0 / 5</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end main-stage -->
+</div><!-- end demo-area -->
+
+<script>
+// ═══════════ DEMO ENGINE ═══════════
+let demoRunning = false;
+let speedMultiplier = 1;
+let demoAbort = false;
+let wishesCollected = 0;
+let invitesSent = 0;
+
+const guests = [
+  {name:'Rahul Verma', init:'R', color:'#1a56ff', channel:'WhatsApp'},
+  {name:'Ananya Singh', init:'A', color:'#ff4fd8', channel:'Email'},
+  {name:'Meena Kapoor', init:'M', color:'#06d6a0', channel:'WhatsApp'},
+  {name:'Dev Kumar', init:'D', color:'#ffb703', channel:'WhatsApp'},
+  {name:'Kavya Nair', init:'K', color:'#f97316', channel:'Email'},
+  {name:'Arjun Nair', init:'J', color:'#7c5fe6', channel:'WhatsApp'},
+  {name:'Sunita Rao', init:'S', color:'#06d6a0', channel:'Email'},
+  {name:'Preethi M.', init:'P', color:'#ff4fd8', channel:'WhatsApp'},
+  {name:'Ravi Kumar', init:'R', color:'#1a56ff', channel:'Email'},
+  {name:'Deepa Nair', init:'D', color:'#ffb703', channel:'WhatsApp'},
+  {name:'Arun Patel', init:'A', color:'#7c5fe6', channel:'Email'},
+  {name:'Nisha Gupta', init:'N', color:'#06d6a0', channel:'WhatsApp'},
+  {name:'Vikram S.', init:'V', color:'#f97316', channel:'Email'},
+  {name:'Pooja Iyer', init:'P', color:'#ff4fd8', channel:'WhatsApp'},
+  {name:'Suresh K.', init:'S', color:'#1a56ff', channel:'Email'},
+];
+const wishTypes = ['🎥 0:32','🎙️ 0:18','✍️ Text','🎥 0:45','🎙️ 0:22','✍️ Text','🎥 0:38','🎙️ 0:15','✍️ Text','🎥 0:28','✍️ Text','🎥 0:52','🎙️ 0:30','✍️ Text','🎥 0:41'];
+
+function delay(ms) {
+  return new Promise(r => {
+    if (demoAbort) r();
+    setTimeout(() => { if (!demoAbort) r(); else r(); }, ms * speedMultiplier);
+  });
+}
+
+function setSpeed(m) {
+  speedMultiplier = m;
+  document.querySelectorAll('.speed-btn').forEach(b => b.classList.remove('active'));
+  const labels = {2:'0.5×',1:'1×',0.5:'2×',0.25:'4×'};
+  document.querySelectorAll('.speed-btn').forEach(b => {
+    if (b.textContent === labels[m]) b.classList.add('active');
+  });
+}
+
+function notify(msg, type='info', dur=4000) {
+  const ns = document.getElementById('notifStream');
+  const n = document.createElement('div');
+  n.className = `notif ${type}`;
+  const icons = {success:'✅',info:'ℹ️',warning:'⚠️'};
+  n.innerHTML = `<div class="notif-icon">${icons[type]}</div><div class="notif-body"><div class="notif-msg">${msg}</div><div class="notif-time">${new Date().toLocaleTimeString()}</div></div>`;
+  ns.appendChild(n);
+  if (ns.children.length > 4) ns.removeChild(ns.firstChild);
+  setTimeout(() => { if (n.parentNode) n.style.opacity = '0'; setTimeout(() => n.remove(), 400); }, dur);
+}
+
+function setSceneStatus(id, type) {
+  const el = document.getElementById(`sc${id}status`);
+  const labels = {waiting:'⏳ Waiting', active:'⚡ Running', done:'✅ Complete'};
+  const chips = {waiting:'chip-waiting', active:'chip-active', done:'chip-done'};
+  el.className = `status-chip ${chips[type]}`;
+  el.textContent = labels[type];
+}
+
+function setTimelineStep(id, state) {
+  const num = document.getElementById(`tln${id}`);
+  const lbl = document.getElementById(`tls${id}`);
+  const line = document.getElementById(`tll${id}`);
+  num.className = `tl-num ${state}`;
+  if (state === 'done') { num.textContent = '✓'; lbl.className = 'tl-step-label done'; }
+  else if (state === 'active') { num.textContent = id; lbl.className = 'tl-step-label active'; }
+  if (line && state === 'done') line.classList.add('done');
+}
+
+function setProgress(pct) {
+  document.getElementById('overallProg').style.width = pct + '%';
+  document.getElementById('progPct').textContent = Math.round(pct) + '%';
+}
+
+// Typewriter effect
+async function typeIn(elId, text, speed=80) {
+  const el = document.getElementById(elId);
+  el.value = '';
+  el.classList.add('typing');
+  for (let c of text) {
+    if (demoAbort) break;
+    el.value += c;
+    await delay(speed);
+  }
+  el.classList.remove('typing');
+  el.classList.add('done');
+}
+
+// ═══ SCENE 1 ═══
+async function runScene1() {
+  const scene = document.getElementById('scene1');
+  scene.classList.add('active');
+  setSceneStatus(1, 'active');
+  setTimelineStep(1, 'active');
+  setProgress(5);
+  notify('🎉 Starting Surprise Planner setup...', 'info');
+  await delay(600);
+
+  await typeIn('f_name', 'Priya Sharma', 80);
+  await delay(300);
+  await typeIn('f_type', 'Birthday 🎂', 60);
+  await delay(300);
+  await typeIn('f_date', 'December 31, 2025', 50);
+  await delay(400);
+
+  // Show countdown
+  document.getElementById('cdDisplay').classList.add('show');
+  notify('⏳ Countdown timer set — 12 days to go!', 'success');
+  await delay(800);
+
+  // Start countdown animation
+  let d = 12, h = 8, m = 34;
+  for (let i = 0; i < 6; i++) {
+    document.getElementById('cd_d').textContent = String(d).padStart(2,'0');
+    document.getElementById('cd_h').textContent = String(h).padStart(2,'0');
+    document.getElementById('cd_m').textContent = String(m).padStart(2,'0');
+    m = Math.max(0, m - 5);
+    await delay(200);
+  }
+  setProgress(12);
+  notify('📋 Setting up guest list...', 'info');
+  await delay(500);
+
+  // Show guests
+  document.getElementById('guestListArea').style.display = 'block';
+  const gr = document.getElementById('guestRows');
+  gr.innerHTML = '';
+  for (let i = 0; i < Math.min(5, guests.length); i++) {
+    const g = guests[i];
+    const row = document.createElement('div');
+    row.className = 'guest-row';
+    row.innerHTML = `<div class="guest-av" style="background:${g.color}20;color:${g.color}">${g.init}</div>
+      <div class="guest-name">${g.name}</div>
+      <div class="guest-contact">${g.channel}</div>
+      <span class="guest-status gs-invited">Invited</span>`;
+    gr.appendChild(row);
+    await delay(120);
+    row.classList.add('appear');
+  }
+  const moreRow = document.createElement('div');
+  moreRow.className = 'guest-row appear';
+  moreRow.innerHTML = `<div style="width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700">+10</div>
+    <div class="guest-name" style="color:var(--text3)">and 10 more teammates...</div>
+    <span class="guest-status gs-invited">Invited</span>`;
+  gr.appendChild(moreRow);
+
+  await delay(600);
+  document.getElementById('s1_launched').style.display = 'block';
+  notify('🚀 Surprise event launched! AI automation armed.', 'success');
+  setProgress(20);
+  setSceneStatus(1, 'done');
+  setTimelineStep(1, 'done');
+  scene.classList.remove('active');
+  scene.classList.add('done');
+  await delay(800);
+}
+
+// ═══ SCENE 2 ═══
+async function runScene2() {
+  const scene = document.getElementById('scene2');
+  scene.classList.add('active');
+  scene.scrollIntoView({behavior:'smooth', block:'center'});
+  setSceneStatus(2, 'active');
+  setTimelineStep(2, 'active');
+  setProgress(25);
+  notify('📨 AI personalising invites for 15 contributors...', 'info');
+  await delay(800);
+
+  // WhatsApp typing then show
+  document.getElementById('waTyping').classList.add('show');
+  await delay(1200);
+  document.getElementById('waTyping').classList.remove('show');
+  document.getElementById('waBubble').style.display = 'block';
+  notify('💬 WhatsApp template AI-personalised!', 'success');
+  await delay(500);
+
+  // Email reveal
+  document.getElementById('emailSubject').style.opacity = '1';
+  document.getElementById('emailBody').style.opacity = '1';
+  notify('📧 Email template ready!', 'success');
+  await delay(800);
+
+  // Send invites one by one — counter
+  const tbody = document.getElementById('trackerBody');
+  tbody.innerHTML = '';
+  invitesSent = 0;
+  document.getElementById('metricInvites').textContent = '0';
+
+  for (let i = 0; i < guests.length; i++) {
+    const g = guests[i];
+    invitesSent++;
+    document.getElementById('is_sent_n').textContent = invitesSent;
+    document.getElementById('metricInvites').textContent = invitesSent;
+    document.getElementById('is_sent').classList.add('highlight');
+
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td><span style="display:inline-flex;align-items:center;gap:7px"><span style="width:26px;height:26px;border-radius:50%;background:${g.color}25;color:${g.color};display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:800">${g.init}</span>${g.name}</span></td>
+      <td><span class="chip ${g.channel==='WhatsApp'?'chip-green':'chip-blue'}">${g.channel==='WhatsApp'?'💬':'📧'} ${g.channel}</span></td>
+      <td><span class="chip chip-green">✅ Sent</span></td>
+      <td><span class="chip chip-gray" id="opened_${i}">⏳</span></td>
+      <td><span class="chip chip-gray" id="wish_${i}">⏳</span></td>`;
+    tbody.appendChild(tr);
+    await delay(i < 5 ? 180 : 80);
+  }
+
+  notify(`📨 ${invitesSent} invites sent via WhatsApp + Email!`, 'success');
+  await delay(600);
+
+  // Simulate opens
+  let opened = 0;
+  for (let i = 0; i < guests.length; i++) {
+    const el = document.getElementById(`opened_${i}`);
+    if (el) {
+      el.className = 'chip chip-blue';
+      el.textContent = '👁 Opened';
+      opened++;
+      document.getElementById('is_opened_n').textContent = opened;
+      await delay(100);
+    }
+  }
+
+  const rate = Math.round((opened / guests.length) * 100);
+  document.getElementById('is_resp_n').textContent = rate + '%';
+  document.getElementById('metricRate').textContent = rate + '%';
+  notify(`👁 ${opened}/${guests.length} contributors opened invite!`, 'success');
+  setProgress(40);
+  setSceneStatus(2, 'done');
+  setTimelineStep(2, 'done');
+  scene.classList.remove('active');
+  scene.classList.add('done');
+  await delay(800);
+}
+
+// ═══ SCENE 3 ═══
+async function runScene3() {
+  const scene = document.getElementById('scene3');
+  scene.classList.add('active');
+  scene.scrollIntoView({behavior:'smooth', block:'center'});
+  setSceneStatus(3, 'active');
+  setTimelineStep(3, 'active');
+  setProgress(45);
+  wishesCollected = 0;
+  notify('💌 Wish collection open! Contributions coming in...', 'info');
+  await delay(600);
+
+  // Simulate recording
+  const wtCards = ['wt_video','wt_audio','wt_text'];
+  for (let wt of wtCards) {
+    document.getElementById(wt).classList.add('selected');
+    await delay(300);
+    document.getElementById(wt).classList.remove('selected');
+  }
+  document.getElementById('wt_video').classList.add('selected');
+
+  // Simulate recording
+  const recBtn = document.getElementById('recBtnDemo');
+  const recSt = document.getElementById('recStatusTxt');
+  const recTm = document.getElementById('recTimerDisp');
+  recBtn.classList.add('recording');
+  recBtn.textContent = '⏹️';
+  recSt.textContent = '🔴 Recording... speak your wish!';
+  recTm.style.display = 'block';
+  let secs = 0;
+  const recInt = setInterval(() => {
+    secs++;
+    recTm.textContent = `0:${String(secs).padStart(2,'0')}`;
+  }, 1000 * speedMultiplier);
+  await delay(3500);
+  clearInterval(recInt);
+  recBtn.classList.remove('recording');
+  recBtn.textContent = '✅';
+  recSt.textContent = '✅ Recording saved!';
+  notify('🎥 Demo recording complete — 0:28', 'success');
+  await delay(600);
+
+  // Wishes pouring in
+  const feed = document.getElementById('wishFeed');
+  feed.innerHTML = '';
+  const wishMsgs = [
+    "Happy Birthday Priya! Your energy is infectious 🎂",
+    "Wishing you all the happiness in the world!",
+    "So lucky to have you as a colleague!",
+    "May all your dreams come true this year!",
+    "You inspire us every single day!",
+  ];
+
+  for (let i = 0; i < guests.length; i++) {
+    const g = guests[i];
+    wishesCollected++;
+    const wType = wishTypes[i];
+
+    // Update tracker
+    const wEl = document.getElementById(`wish_${i}`);
+    if (wEl) {
+      const isVid = wType.includes('🎥');
+      const isAudio = wType.includes('🎙️');
+      wEl.className = `chip ${isVid ? 'chip-blue' : isAudio ? 'chip-gold' : 'chip-green'}`;
+      wEl.textContent = wType;
+    }
+
+    // Ring update
+    const pct = Math.round((wishesCollected / 15) * 100);
+    const circumference = 327;
+    const offset = circumference - (pct / 100) * circumference;
+    document.getElementById('wishRingFill').style.strokeDashoffset = offset;
+    document.getElementById('wishPct').textContent = pct + '%';
+    document.getElementById('wishCount').textContent = `${wishesCollected}/15`;
+    document.getElementById('metricWishes').textContent = `${wishesCollected}/15`;
+
+    // Feed item
+    const item = document.createElement('div');
+    item.className = 'wish-item';
+    const msg = wishMsgs[i % wishMsgs.length];
+    const isVid = wType.includes('🎥'), isAu = wType.includes('🎙️');
+    item.innerHTML = `<div class="wish-av-sm" style="background:${g.color}25;color:${g.color}">${g.init}</div>
+      <div style="flex:1">
+        <div class="wish-item-name">${g.name} <span class="chip ${isVid?'chip-blue':isAu?'chip-gold':'chip-green'}" style="font-size:10px">${wType}</span></div>
+        <div class="wish-item-time">Just now</div>
+        ${!isVid && !isAu ? `<div class="wish-item-content">"${msg}"</div>` : `<div class="wish-item-content" style="color:rgba(255,255,255,.4);font-style:italic">Audio/video clip received ✓</div>`}
+      </div>`;
+    feed.insertBefore(item, feed.firstChild);
+    if (feed.children.length > 5) feed.lastChild.remove();
+    await delay(10);
+    item.classList.add('appear');
+
+    if (wishesCollected === 8) notify('🎉 8/15 wishes — over halfway!', 'success');
+    if (wishesCollected === 15) notify('🎊 All 15 wishes collected! Collection complete!', 'success');
+
+    await delay(i < 5 ? 350 : 200);
+  }
+
+  document.getElementById('metricRate').textContent = '100%';
+  setProgress(65);
+  document.getElementById('metricVideo').textContent = 'Compiling...';
+  setSceneStatus(3, 'done');
+  setTimelineStep(3, 'done');
+  scene.classList.remove('active');
+  scene.classList.add('done');
+  await delay(800);
+}
+
+// ═══ SCENE 4 ═══
+async function runScene4() {
+  const scene = document.getElementById('scene4');
+  scene.classList.add('active');
+  scene.scrollIntoView({behavior:'smooth', block:'center'});
+  setSceneStatus(4, 'active');
+  setTimelineStep(4, 'active');
+  setProgress(68);
+  notify('🤖 AI Video compilation starting...', 'info');
+  await delay(600);
+
+  // Step by step compilation
+  const steps = ['cs1','cs2','cs3','cs4','cs5'];
+  const fills = ['cp1','cp2','cp3','cp4','cp5'];
+  const msgs = [
+    '🔍 Analysing 15 clips for quality...', '✂️ Sequencing & trimming clips...',
+    '🎵 Adding music & transitions...', '✨ Adding text overlays & effects...',
+    '📤 Exporting 1080p HD + uploading...'
+  ];
+  const notifMsgs = ['Analysis complete!','Sequencing done!','Music added!','Effects applied!','Export complete!'];
+
+  let duration = 0;
+  for (let i = 0; i < steps.length; i++) {
+    const cs = document.getElementById(steps[i]);
+    cs.classList.add('active');
+    notify(msgs[i], 'info');
+    // Progress bar fill animation
+    const fill = document.getElementById(fills[i]);
+    fill.style.width = '0%';
+    await delay(100);
+    fill.style.transition = `width ${1.2 * speedMultiplier}s ease`;
+    fill.style.width = '100%';
+    await delay(1400);
+    cs.classList.remove('active');
+    cs.classList.add('done');
+    const icon = cs.querySelector('.compile-step-icon');
+    icon.style.background = 'rgba(6,214,160,.15)';
+    notify('✅ ' + notifMsgs[i], 'success');
+
+    // Update duration chip
+    duration += 30;
+    const m = Math.floor(duration / 60), s = duration % 60;
+    document.getElementById('durationChip').textContent = `⏱ ${m}:${String(s).padStart(2,'0')}`;
+    await delay(300);
+  }
+  document.getElementById('durationChip').textContent = '⏱ 2:34';
+  document.getElementById('videoPlayBtn').style.display = 'flex';
+  document.getElementById('metricVideo').textContent = '✅ Ready';
+  notify('🎬 Video compiled! 2:34 duration · 1080p HD', 'success');
+  setProgress(78);
+  await delay(600);
+
+  // Uploads
+  notify('📤 Uploading to platforms...', 'info');
+  const platforms = [
+    {id:'up_yt', fillId:'up_yt_p', name:'YouTube', color:'#ff0000'},
+    {id:'up_ig', fillId:'up_ig_p', name:'Instagram', color:'#E1306C'},
+    {id:'up_wa', fillId:'up_wa_p', name:'WhatsApp', color:'#25D366'},
+  ];
+  for (const p of platforms) {
+    const card = document.getElementById(p.id);
+    card.classList.add('uploading');
+    const fill = document.getElementById(p.fillId);
+    fill.style.width = '0%';
+    await delay(100);
+    fill.style.transition = `width ${1.5 * speedMultiplier}s ease`;
+    fill.style.width = '100%';
+    await delay(1700);
+    card.classList.remove('uploading');
+    card.classList.add('done');
+    notify(`✅ Uploaded to ${p.name}!`, 'success');
+    await delay(300);
+  }
+  setProgress(90);
+  setSceneStatus(4, 'done');
+  setTimelineStep(4, 'done');
+  scene.classList.remove('active');
+  scene.classList.add('done');
+  await delay(800);
+}
+
+// ═══ SCENE 5 ═══
+async function runScene5() {
+  const scene = document.getElementById('scene5');
+  scene.classList.add('active');
+  scene.scrollIntoView({behavior:'smooth', block:'center'});
+  setSceneStatus(5, 'active');
+  setTimelineStep(5, 'active');
+  setProgress(93);
+  notify('🚀 Auto-delivery triggered — it\'s Dec 31, 9:00 AM!', 'info');
+  await delay(800);
+
+  document.getElementById('deliveryCard').style.opacity = '1';
+  document.getElementById('deliveryCard').style.transition = 'opacity .5s';
+
+  const deliveryIcons = ['deli1','deli2','deli3','deli4','deli5'];
+  const deliveryLines = ['dell1','dell2','dell3','dell4'];
+  const deliveryMsgs = [
+    '📅 Birthday event triggered!',
+    '🎬 Video retrieved from cloud!',
+    '💌 Personalised message composed!',
+    '📱 Delivering to Priya via WhatsApp + Email!',
+    '⭐ Reaction collected — 5.0 / 5!',
+  ];
+  const deliveryNotifs = [
+    '📅 Dec 31 triggered — sending surprise!',
+    '🎬 Video link retrieved successfully!',
+    '✍️ Personalised message composed by AI!',
+    '📱 Surprise delivered to Priya Sharma!',
+    '🌟 Priya rated her surprise 5 stars!',
+  ];
+  const etaLabels = ['Triggering...','Retrieving...','Composing...','Delivering!','Delivered! ⭐'];
+
+  for (let i = 0; i < deliveryIcons.length; i++) {
+    const icon = document.getElementById(deliveryIcons[i]);
+    icon.classList.add('active');
+    document.getElementById('delEtaNum').textContent = etaLabels[i];
+    notify(deliveryNotifs[i], i < 3 ? 'info' : 'success');
+
+    if (i === 2) {
+      // Show chips updating
+      document.getElementById('del_chip1').className = 'chip chip-blue';
+      document.getElementById('del_chip1').textContent = '🎬 Ready';
+    }
+    if (i === 3) {
+      document.getElementById('del_chip2').className = 'chip chip-green';
+      document.getElementById('del_chip2').textContent = '💬 Sent!';
+      document.getElementById('del_chip3').className = 'chip chip-blue';
+      document.getElementById('del_chip3').textContent = '📺 Uploaded';
+    }
+
+    await delay(900);
+    icon.classList.remove('active');
+    icon.classList.add('done');
+    if (deliveryLines[i]) {
+      document.getElementById(deliveryLines[i]).classList.add('done');
+    }
+  }
+
+  await delay(500);
+  document.getElementById('deliveryMsg').style.display = 'block';
+  document.getElementById('deliveryMsg').style.animation = 'fadeUp .5s ease';
+  notify('🎊 COMPLETE! Priya received her birthday surprise!', 'success', 6000);
+
+  setProgress(100);
+  setSceneStatus(5, 'done');
+  setTimelineStep(5, 'done');
+  scene.classList.remove('active');
+  scene.classList.add('done');
+
+  await delay(1500);
+  launchConfetti();
+  await delay(2000);
+  document.getElementById('completionOverlay').classList.add('show');
+}
+
+// ═══ MAIN DEMO RUNNER ═══
+async function startDemo() {
+  if (demoRunning) return;
+  demoAbort = false;
+  demoRunning = true;
+  document.getElementById('mainPlayBtn').textContent = '⏸ Running...';
+  document.getElementById('heroPlayBtn').textContent = '⏸ Running...';
+
+  await runScene1();
+  if (demoAbort) { demoRunning = false; return; }
+  await runScene2();
+  if (demoAbort) { demoRunning = false; return; }
+  await runScene3();
+  if (demoAbort) { demoRunning = false; return; }
+  await runScene4();
+  if (demoAbort) { demoRunning = false; return; }
+  await runScene5();
+
+  demoRunning = false;
+  document.getElementById('mainPlayBtn').textContent = '▶ Start Full Demo';
+  document.getElementById('heroPlayBtn').textContent = '▶ Start Full Auto Demo';
+}
+
+function jumpToScene(n) {
+  demoAbort = true;
+  demoRunning = false;
+  setTimeout(() => {
+    demoAbort = false;
+    const runners = [null, runScene1, runScene2, runScene3, runScene4, runScene5];
+    document.getElementById('mainPlayBtn').textContent = '⏸ Running...';
+    if (runners[n]) runners[n]().then(() => {
+      demoRunning = false;
+      document.getElementById('mainPlayBtn').textContent = '▶ Start Full Demo';
+    });
+  }, 200);
+}
+
+function restartDemo() {
+  demoAbort = true;
+  demoRunning = false;
+  document.getElementById('completionOverlay').classList.remove('show');
+
+  setTimeout(() => {
+    demoAbort = false;
+    wishesCollected = 0;
+    invitesSent = 0;
+
+    // Reset all scenes
+    for (let i = 1; i <= 5; i++) {
+      const sc = document.getElementById(`scene${i}`);
+      sc.className = 'scene-card';
+      setSceneStatus(i, 'waiting');
+      const tln = document.getElementById(`tln${i}`);
+      if (tln) { tln.className = 'tl-num'; tln.textContent = i; }
+      const tls = document.getElementById(`tls${i}`);
+      if (tls) tls.className = 'tl-step-label';
+      const tll = document.getElementById(`tll${i}`);
+      if (tll) tll.classList.remove('done');
+    }
+
+    // Reset form
+    ['f_name','f_date','f_type'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) { el.value = ''; el.className = 'form-input'; }
+    });
+    document.getElementById('cdDisplay').classList.remove('show');
+    document.getElementById('guestListArea').style.display = 'none';
+    document.getElementById('s1_launched').style.display = 'none';
+
+    // Reset invite
+    document.getElementById('waTyping').classList.remove('show');
+    document.getElementById('waBubble').style.display = 'none';
+    document.getElementById('emailSubject').style.opacity = '0.3';
+    document.getElementById('emailBody').style.opacity = '0.3';
+    document.getElementById('is_sent_n').textContent = '0';
+    document.getElementById('is_opened_n').textContent = '0';
+    document.getElementById('is_resp_n').textContent = '0%';
+    document.getElementById('trackerBody').innerHTML = '';
+    document.getElementById('metricInvites').textContent = '0';
+    document.getElementById('metricRate').textContent = '—';
+
+    // Reset wishes
+    document.getElementById('wishFeed').innerHTML = '';
+    document.getElementById('wishRingFill').style.strokeDashoffset = '327';
+    document.getElementById('wishPct').textContent = '0%';
+    document.getElementById('wishCount').textContent = '0/15';
+    document.getElementById('metricWishes').textContent = '0/15';
+    document.getElementById('recBtnDemo').className = 'rec-btn-demo';
+    document.getElementById('recBtnDemo').textContent = '🎥';
+    document.getElementById('recStatusTxt').textContent = 'Press to record your video wish';
+    document.getElementById('recTimerDisp').style.display = 'none';
+    ['wt_video','wt_audio','wt_text'].forEach(id => document.getElementById(id).classList.remove('selected'));
+
+    // Reset compile
+    ['cs1','cs2','cs3','cs4','cs5'].forEach(id => {
+      document.getElementById(id).className = 'compile-step';
+      const icon = document.getElementById(id).querySelector('.compile-step-icon');
+      if (icon) icon.style.background = '';
+    });
+    ['cp1','cp2','cp3','cp4','cp5'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) { el.style.transition = 'none'; el.style.width = '0%'; }
+    });
+    ['up_yt','up_ig','up_wa'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) { el.className = 'upload-platform'; }
+    });
+    ['up_yt_p','up_ig_p','up_wa_p'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) { el.style.transition = 'none'; el.style.width = '0%'; }
+    });
+    document.getElementById('videoPlayBtn').style.display = 'none';
+    document.getElementById('durationChip').textContent = '⏱ 0:00';
+    document.getElementById('metricVideo').textContent = 'Pending';
+
+    // Reset delivery
+    ['deli1','deli2','deli3','deli4','deli5'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) { el.className = 'del-icon'; }
+    });
+    ['dell1','dell2','dell3','dell4'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.classList.remove('done');
+    });
+    document.getElementById('deliveryCard').style.opacity = '0.3';
+    document.getElementById('deliveryMsg').style.display = 'none';
+    document.getElementById('del_chip1').className = 'chip chip-gray';
+    document.getElementById('del_chip1').textContent = '🎬 Video pending';
+    document.getElementById('del_chip2').className = 'chip chip-gray';
+    document.getElementById('del_chip2').textContent = '💬 WhatsApp pending';
+    document.getElementById('del_chip3').className = 'chip chip-gray';
+    document.getElementById('del_chip3').textContent = '📺 YouTube pending';
+    document.getElementById('delEtaNum').textContent = '—';
+
+    setProgress(0);
+    document.getElementById('mainPlayBtn').textContent = '▶ Start Full Demo';
+    document.getElementById('heroPlayBtn').textContent = '▶ Start Full Auto Demo';
+
+    notify('↺ Demo reset — ready to run again!', 'info');
+  }, 300);
+}
+
+function hideCompletion() {
+  document.getElementById('completionOverlay').classList.remove('show');
+}
+
+// ═══ CONFETTI ═══
+function launchConfetti() {
+  const colors = ['#1a56ff','#ff4fd8','#06d6a0','#ffb703','#f97316','#fff'];
+  for (let i = 0; i < 80; i++) {
+    setTimeout(() => {
+      const p = document.createElement('div');
+      p.className = 'confetti-piece';
+      p.style.left = Math.random() * 100 + 'vw';
+      p.style.background = colors[Math.floor(Math.random() * colors.length)];
+      p.style.width = (Math.random() * 10 + 6) + 'px';
+      p.style.height = (Math.random() * 10 + 6) + 'px';
+      p.style.borderRadius = Math.random() > .5 ? '50%' : '2px';
+      const dur = (Math.random() * 2 + 2);
+      p.style.animationDuration = dur + 's';
+      p.style.animationDelay = (Math.random() * .5) + 's';
+      document.body.appendChild(p);
+      setTimeout(() => p.remove(), (dur + .5) * 1000);
+    }, i * 30);
+  }
+}
+</script>
+</body>
+</html>

@@ -3,9 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DAKIYA — Live Demo Showcase</title>
-<!-- ⭐ FONTS CHANGED: 'Syne' replaced with 'Poppins' for headings, 'DM Sans' with 'Inter' for body, 'JetBrains Mono' kept for monospace -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<title>DAKIYA — Live Demo Showcase (Naija Edition)</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
 :root {
   --ink: #0b0f1a;
@@ -25,7 +24,7 @@
 }
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 body {
-  font-family: 'Inter', sans-serif; /* was 'DM Sans' */
+  font-family: 'DM Sans', sans-serif;
   background: var(--ink);
   color: var(--paper);
   min-height: 100vh;
@@ -69,13 +68,13 @@ body::before {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Poppins', sans-serif; /* was 'Syne' */
+  font-family: 'Syne', sans-serif;
   font-size: 20px;
   font-weight: 800;
   color: #fff;
 }
 .logo-text {
-  font-family: 'Poppins', sans-serif; /* was 'Syne' */
+  font-family: 'Syne', sans-serif;
   font-size: 22px;
   font-weight: 800;
   letter-spacing: 2px;
@@ -151,7 +150,7 @@ body::before {
   text-transform: uppercase;
 }
 .hero h1 {
-  font-family: 'Poppins', sans-serif; /* was 'Syne' */
+  font-family: 'Syne', sans-serif;
   font-size: clamp(36px, 5vw, 62px);
   font-weight: 800;
   line-height: 1.1;
@@ -187,7 +186,7 @@ body::before {
   border: 1.5px solid rgba(255,255,255,.12);
   background: rgba(255,255,255,.05);
   color: rgba(255,255,255,.7);
-  font-family: 'Inter', sans-serif; /* was 'DM Sans' */
+  font-family: 'DM Sans', sans-serif;
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
@@ -239,7 +238,7 @@ body::before {
   top: 90px;
 }
 .panel-title {
-  font-family: 'Poppins', sans-serif; /* was 'Syne' */
+  font-family: 'Syne', sans-serif;
   font-size: 13px;
   font-weight: 800;
   letter-spacing: .1em;
@@ -429,7 +428,7 @@ body::before {
   font-size: 18px;
 }
 .scene-title {
-  font-family: 'Poppins', sans-serif; /* was 'Syne' */
+  font-family: 'Syne', sans-serif;
   font-size: 16px;
   font-weight: 800;
 }
@@ -474,7 +473,7 @@ body::before {
   border-radius: 11px;
   padding: 10px 14px;
   color: #fff;
-  font-family: 'Inter', sans-serif; /* was 'DM Sans' */
+  font-family: 'DM Sans', sans-serif;
   font-size: 14px;
   font-weight: 500;
   transition: all .3s;
@@ -650,7 +649,7 @@ body::before {
   font-size: 13px;
   font-weight: 700;
   cursor: pointer;
-  font-family: 'Inter', sans-serif; /* was 'DM Sans' */
+  font-family: 'DM Sans', sans-serif;
 }
 
 /* Invite Stats */
@@ -855,7 +854,7 @@ body::before {
 .video-emoji { font-size: 52px; margin-bottom: 14px; animation: floatEmoji 3s ease-in-out infinite; }
 @keyframes floatEmoji { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
 .video-title {
-  font-family: 'Poppins', sans-serif; /* was 'Syne' */
+  font-family: 'Syne', sans-serif;
   font-size: 1.6rem;
   font-weight: 800;
   color: var(--gold);
@@ -1096,7 +1095,7 @@ body::before {
 .completion-emoji { font-size: 72px; margin-bottom: 20px; animation: bounce 1s ease infinite alternate; }
 @keyframes bounce { from{transform:scale(1)} to{transform:scale(1.08)} }
 .completion-title {
-  font-family: 'Poppins', sans-serif; /* was 'Syne' */
+  font-family: 'Syne', sans-serif;
   font-size: 36px;
   font-weight: 800;
   margin-bottom: 10px;
@@ -1111,7 +1110,7 @@ body::before {
   background: linear-gradient(135deg, var(--blue), var(--pink));
   border: none;
   border-radius: 30px;
-  font-family: 'Poppins', sans-serif; /* was 'Syne' */
+  font-family: 'Syne', sans-serif;
   font-size: 16px;
   font-weight: 800;
   color: #fff;
@@ -1157,10 +1156,10 @@ body::before {
   <div class="completion-card">
     <div class="completion-emoji">🎉</div>
     <div class="completion-title">Surprise Delivered!</div>
-    <div class="completion-sub">Priya Sharma just received her birthday surprise video from 15 teammates. The entire journey — from planning to delivery — took just <strong style="color:#fff">4 minutes</strong> in demo mode.</div>
+    <div class="completion-sub">Chioma Okafor just received her birthday surprise video from 15 teammates. The entire journey — from planning to delivery — took just <strong style="color:#fff">4 minutes</strong> in demo mode.</div>
     <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
       <button class="confetti-btn" onclick="restartDemo()">▶ Run Demo Again</button>
-      <button style="padding:15px 28px;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.15);border-radius:30px;color:#fff;font-family:'Poppins',sans-serif;font-size:15px;font-weight:700;cursor:pointer" onclick="hideCompletion()">✕ Close</button>
+      <button style="padding:15px 28px;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.15);border-radius:30px;color:#fff;font-family:'Syne',sans-serif;font-size:15px;font-weight:700;cursor:pointer" onclick="hideCompletion()">✕ Close</button>
     </div>
   </div>
 </div>
@@ -1322,7 +1321,7 @@ body::before {
         <div class="planner-form">
           <div class="form-field">
             <label>Celebrant Name</label>
-            <input class="form-input" id="f_name" readonly placeholder="Priya Sharma" value="">
+            <input class="form-input" id="f_name" readonly placeholder="Chioma Okafor" value="">
           </div>
           <div class="form-field">
             <label>Occasion</label>
@@ -1330,7 +1329,7 @@ body::before {
           </div>
           <div class="form-field">
             <label>Celebration Date</label>
-            <input class="form-input" id="f_date" readonly placeholder="Dec 31, 2025" value="">
+            <input class="form-input" id="f_date" readonly placeholder="Dec 31, 2026" value="">
           </div>
         </div>
 
@@ -1398,8 +1397,8 @@ body::before {
               <div class="wa-dot"></div><div class="wa-dot"></div><div class="wa-dot"></div>
             </div>
             <div class="wa-bubble" id="waBubble" style="display:none">
-              Hey <b>Rahul</b>! 👋<br><br>
-              I'm organising a surprise <b>Birthday</b> for <b>Priya Sharma</b>! 🎂<br><br>
+              Hey <b>Chidi</b>! 👋<br><br>
+              I'm organising a surprise <b>Birthday</b> for <b>Chioma Okafor</b>! 🎂<br><br>
               Could you record a short video wish? Takes just 2 minutes!<br><br>
               📅 Deadline: Dec 29<br>
               🎬 Your clip = part of the surprise video!<br><br>
@@ -1409,11 +1408,11 @@ body::before {
           <div class="email-card">
             <div class="email-header-bar">
               <div class="email-from">From: Dakiya Platform &lt;hello@dakiya.app&gt;</div>
-              <div class="email-subject" id="emailSubject" style="opacity:0.3">🎉 Help surprise Priya for her Birthday!</div>
+              <div class="email-subject" id="emailSubject" style="opacity:0.3">🎉 Help surprise Chioma for her Birthday!</div>
             </div>
             <div class="email-body" id="emailBody" style="opacity:0.3">
-              Hi Rahul,<br><br>
-              We're creating a wonderful surprise video for <b>Priya's birthday on Dec 31st</b>!<br><br>
+              Hi Chidi,<br><br>
+              We're creating a wonderful surprise video for <b>Chioma's birthday on Dec 31st</b>!<br><br>
               Click below → Record video/audio/text → We compile the surprise!<br><br>
               ⏰ Deadline: <b>December 29th</b>
             </div>
@@ -1511,8 +1510,8 @@ body::before {
               <div class="video-bg-gradient" id="videoBg"></div>
               <div class="video-content">
                 <div class="video-emoji">🎂</div>
-                <div class="video-title">Happy Birthday, Priya!</div>
-                <div class="video-subtitle" style="color:rgba(255,255,255,.5)">From Rahul, Ananya, Meena + 12 more</div>
+                <div class="video-title">Happy Birthday, Chioma!</div>
+                <div class="video-subtitle" style="color:rgba(255,255,255,.5)">From Chidi, Amarachi, Emeka + 12 more</div>
                 <button class="video-play-btn" id="videoPlayBtn" style="display:none" onclick="notify('▶ Video preview playing — 2:34 duration','info')">▶</button>
               </div>
             </div>
@@ -1595,7 +1594,7 @@ body::before {
           <div class="scene-icon" style="background:linear-gradient(135deg,rgba(6,214,160,.25),rgba(26,86,255,.15))">🚀</div>
           <div>
             <div class="scene-title">SURPRISE DELIVERY</div>
-            <div class="scene-desc">Auto-delivered to Priya on her birthday, Dec 31 at 9:00 AM</div>
+            <div class="scene-desc">Auto-delivered to Chioma on her birthday, Dec 31 at 9:00 AM</div>
           </div>
         </div>
         <div class="status-chip chip-waiting" id="sc5status">⏳ Waiting</div>
@@ -1619,7 +1618,7 @@ body::before {
           <div class="del-line" id="dell3"></div>
           <div class="del-step">
             <div class="del-icon" id="deli4">📱</div>
-            <div class="del-lbl">Delivered<br>to Priya</div>
+            <div class="del-lbl">Delivered<br>to Chioma</div>
           </div>
           <div class="del-line" id="dell4"></div>
           <div class="del-step">
@@ -1629,9 +1628,9 @@ body::before {
         </div>
 
         <div class="delivery-card" id="deliveryCard" style="opacity:0.3">
-          <div class="del-avatar">P</div>
+          <div class="del-avatar">C</div>
           <div>
-            <div class="del-name">Priya Sharma</div>
+            <div class="del-name">Chioma Okafor</div>
             <div class="del-sub">Birthday · Dec 31 · Finance Dept</div>
             <div style="margin-top:6px;display:flex;gap:6px;flex-wrap:wrap">
               <span class="chip chip-gray" id="del_chip1">🎬 Video pending</span>
@@ -1646,12 +1645,12 @@ body::before {
         </div>
 
         <div id="deliveryMsg" style="display:none;background:linear-gradient(135deg,rgba(6,214,160,.1),rgba(26,86,255,.06));border:1px solid rgba(6,214,160,.25);border-radius:var(--r);padding:18px">
-          <div style="font-size:13px;font-weight:700;color:var(--green);margin-bottom:8px">🤖 Auto-Delivery Message — Sent to Priya at 9:00 AM</div>
+          <div style="font-size:13px;font-weight:700;color:var(--green);margin-bottom:8px">🤖 Auto-Delivery Message — Sent to Chioma at 9:00 AM</div>
           <div style="background:rgba(0,0,0,.2);border-radius:10px;padding:14px;font-size:13.5px;line-height:1.7;color:rgba(255,255,255,.85)">
-            "🎉 <b>Happy Birthday, Priya!</b><br><br>
+            "🎉 <b>Happy Birthday, Chioma!</b><br><br>
             Your team put together something special for you. Watch your surprise video here:<br>
-            🎬 <span style="color:#7da4ff;text-decoration:underline">youtube.com/watch?v=dakiya-priya-bday-2025</span><br><br>
-            With love from Rahul, Ananya, Meena & 12 others! 🎂🎊"
+            🎬 <span style="color:#7da4ff;text-decoration:underline">youtube.com/watch?v=dakiya-chioma-bday-2026</span><br><br>
+            With love from Chidi, Amarachi, Emeka & 12 others! 🎂🎊"
           </div>
           <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
             <span class="chip chip-green">✅ WhatsApp Delivered</span>
@@ -1666,29 +1665,30 @@ body::before {
 </div><!-- end demo-area -->
 
 <script>
-// ═══════════ DEMO ENGINE ═══════════
+// ═══════════ DEMO ENGINE (with Nigerian names) ═══════════
 let demoRunning = false;
 let speedMultiplier = 1;
 let demoAbort = false;
 let wishesCollected = 0;
 let invitesSent = 0;
 
+// All names changed to Nigerian names
 const guests = [
-  {name:'Rahul Verma', init:'R', color:'#1a56ff', channel:'WhatsApp'},
-  {name:'Ananya Singh', init:'A', color:'#ff4fd8', channel:'Email'},
-  {name:'Meena Kapoor', init:'M', color:'#06d6a0', channel:'WhatsApp'},
-  {name:'Dev Kumar', init:'D', color:'#ffb703', channel:'WhatsApp'},
-  {name:'Kavya Nair', init:'K', color:'#f97316', channel:'Email'},
-  {name:'Arjun Nair', init:'J', color:'#7c5fe6', channel:'WhatsApp'},
-  {name:'Sunita Rao', init:'S', color:'#06d6a0', channel:'Email'},
-  {name:'Preethi M.', init:'P', color:'#ff4fd8', channel:'WhatsApp'},
-  {name:'Ravi Kumar', init:'R', color:'#1a56ff', channel:'Email'},
-  {name:'Deepa Nair', init:'D', color:'#ffb703', channel:'WhatsApp'},
-  {name:'Arun Patel', init:'A', color:'#7c5fe6', channel:'Email'},
-  {name:'Nisha Gupta', init:'N', color:'#06d6a0', channel:'WhatsApp'},
-  {name:'Vikram S.', init:'V', color:'#f97316', channel:'Email'},
-  {name:'Pooja Iyer', init:'P', color:'#ff4fd8', channel:'WhatsApp'},
-  {name:'Suresh K.', init:'S', color:'#1a56ff', channel:'Email'},
+  {name:'Chidi Okonkwo', init:'C', color:'#1a56ff', channel:'WhatsApp'},
+  {name:'Amarachi Nwosu', init:'A', color:'#ff4fd8', channel:'Email'},
+  {name:'Emeka Okafor', init:'E', color:'#06d6a0', channel:'WhatsApp'},
+  {name:'Ngozi Eze', init:'N', color:'#ffb703', channel:'WhatsApp'},
+  {name:'Chukwudi Okafor', init:'C', color:'#f97316', channel:'Email'},
+  {name:'Adaobi Nnamdi', init:'A', color:'#7c5fe6', channel:'WhatsApp'},
+  {name:'Obinna Ugwu', init:'O', color:'#06d6a0', channel:'Email'},
+  {name:'Chioma Obi', init:'C', color:'#ff4fd8', channel:'WhatsApp'},
+  {name:'Ifeanyi Okeke', init:'I', color:'#1a56ff', channel:'Email'},
+  {name:'Kelechi Nwankwo', init:'K', color:'#ffb703', channel:'WhatsApp'},
+  {name:'Uchenna Eze', init:'U', color:'#7c5fe6', channel:'Email'},
+  {name:'Adanna Ugwu', init:'A', color:'#06d6a0', channel:'WhatsApp'},
+  {name:'Chibuzor Nnamdi', init:'C', color:'#f97316', channel:'Email'},
+  {name:'Chinenye Obi', init:'C', color:'#ff4fd8', channel:'WhatsApp'},
+  {name:'Oluchi Okonkwo', init:'O', color:'#1a56ff', channel:'Email'},
 ];
 const wishTypes = ['🎥 0:32','🎙️ 0:18','✍️ Text','🎥 0:45','🎙️ 0:22','✍️ Text','🎥 0:38','🎙️ 0:15','✍️ Text','🎥 0:28','✍️ Text','🎥 0:52','🎙️ 0:30','✍️ Text','🎥 0:41'];
 
@@ -1766,11 +1766,11 @@ async function runScene1() {
   notify('🎉 Starting Surprise Planner setup...', 'info');
   await delay(600);
 
-  await typeIn('f_name', 'Priya Sharma', 80);
+  await typeIn('f_name', 'Chioma Okafor', 80);
   await delay(300);
   await typeIn('f_type', 'Birthday 🎂', 60);
   await delay(300);
-  await typeIn('f_date', 'December 31, 2025', 50);
+  await typeIn('f_date', 'December 31, 2026', 50);
   await delay(400);
 
   // Show countdown
@@ -1947,7 +1947,7 @@ async function runScene3() {
   const feed = document.getElementById('wishFeed');
   feed.innerHTML = '';
   const wishMsgs = [
-    "Happy Birthday Priya! Your energy is infectious 🎂",
+    "Happy Birthday Chioma! Your energy is infectious 🎂",
     "Wishing you all the happiness in the world!",
     "So lucky to have you as a colleague!",
     "May all your dreams come true this year!",
@@ -2110,15 +2110,15 @@ async function runScene5() {
     '📅 Birthday event triggered!',
     '🎬 Video retrieved from cloud!',
     '💌 Personalised message composed!',
-    '📱 Delivering to Priya via WhatsApp + Email!',
+    '📱 Delivering to Chioma via WhatsApp + Email!',
     '⭐ Reaction collected — 5.0 / 5!',
   ];
   const deliveryNotifs = [
     '📅 Dec 31 triggered — sending surprise!',
     '🎬 Video link retrieved successfully!',
     '✍️ Personalised message composed by AI!',
-    '📱 Surprise delivered to Priya Sharma!',
-    '🌟 Priya rated her surprise 5 stars!',
+    '📱 Surprise delivered to Chioma Okafor!',
+    '🌟 Chioma rated her surprise 5 stars!',
   ];
   const etaLabels = ['Triggering...','Retrieving...','Composing...','Delivering!','Delivered! ⭐'];
 
@@ -2151,7 +2151,7 @@ async function runScene5() {
   await delay(500);
   document.getElementById('deliveryMsg').style.display = 'block';
   document.getElementById('deliveryMsg').style.animation = 'fadeUp .5s ease';
-  notify('🎊 COMPLETE! Priya received her birthday surprise!', 'success', 6000);
+  notify('🎊 COMPLETE! Chioma received her birthday surprise!', 'success', 6000);
 
   setProgress(100);
   setSceneStatus(5, 'done');
